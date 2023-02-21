@@ -1,0 +1,33 @@
+Kahoot M109: 
+
+Verteilte Systeme: Lastenverteilugn auf verscheidene Server
+
+CSP Zusammenarbeit: wissen wer für was verantwortliche ist, 
+IAAS: bist du für VMs verantwortlich
+
+Was ist Clusternetz: Zusammenschluss mehrerer Server + Lastenverteilung im LAN
+
+Grindsysteme teilendie CPU last auf, 
+Grindsysteme grösser als cluster, 
+Serverfarm = Gruppe von gleichen Servern einer Logischen Eintheit
+
+Was ist ein verteiltes System: Cluster, Grid, Cloud
+
+Transparenz Dateispericher: Cluster Lösungen sind transparenter als Cloud, On Premise Transparenter als Cloud (Speicherort)
+
+PaaS beispiel: Azure Active Directory (Azure AD) + Azure SQL Database
+
+Azure VM: 
+
+Probrlem wenn Ressourcen nicht genutzt werden: Ungenutzte Ressourcen Kosten 
+
+Synamische Skalierung: Kostenreduktion, die Last wird an Demand angepasst
+
+Azure Vnet: Darstellung eines eignenen Netzwerk, Sichere Kommunikation im LAN
+
+CSP besitzt nur Hardware: IaaS
+
+PaaS Betriebssystem von CPS, SaaS Form von Cloud-Computing-Services
+
+Data at Rest: Daten die sich in einem Festspeicher befinden (Kaltspeicher)
+
