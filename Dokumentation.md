@@ -8,7 +8,7 @@
 
 1. [Was ist Docker](#Was-ist-Docker)
 2. [Dockerimage builden](#Dockerimage-builden)
-3. [Run-Stop-Remove-sheet](#Run-Stop-Remove-sheet)
+3. [Run-Check-Stop-Remove-sheet](#Run-Check-Stop-Remove-sheet)
 
 
 <br>
@@ -58,5 +58,16 @@ docker build -t bsp-apache-php .
 
 <br>
 
-## Run-Stop-Remove-sheet
+## Run-Check-Stop-Remove-sheet
 
+### Container starten
+```txt
+docker run -d --name bsp-apache-php-container -p 8080:80 bsp-apache-php
+```
+#### Optionen & Erklärung
+- -d: gibt an, dass der Container im Hintergrund läuft. (daemon)
+- --name: gibt en Namen des Containers an, dieser kann anders lauten als das Image.
+- -p: Verknüpft den Port 80 innerhalb des Containers mit dem Port 8080 des Hosts.
+- bsp-apache-php: der Name des Image aus dem der Container gestartet wird.
+
+### Container Checken
