@@ -9,6 +9,7 @@
 1. [Was ist Docker](#Was-ist-Docker)
 2. [Dockerimage builden](#Dockerimage-builden)
 3. [Run-Check-Stop-Remove-sheet](#Run-Check-Stop-Remove-sheet)
+4. [Volumes](#Volumes)
 
 
 <br>
@@ -60,7 +61,7 @@ docker build -t bsp-apache-php .
 
 ## Run-Check-Stop-Remove-sheet
 
-### Container starten
+### Container Run
 ```txt
 docker run -d --name bsp-apache-php-container -p 8080:80 bsp-apache-php
 ```
@@ -71,3 +72,37 @@ docker run -d --name bsp-apache-php-container -p 8080:80 bsp-apache-php
 - bsp-apache-php: der Name des Image aus dem der Container gestartet wird.
 
 ### Container Checken
+```txt
+docker ps
+```
+
+### Container Managing
+Sie können den Container mit stop, start oder restart anhalten und neu starten:
+
+```txt
+docker start bsp-apache-php-container
+```
+```txt
+docker stop bsp-apache-php-container
+```
+```txt
+docker restart bsp-apache-php-container
+```
+Der Container kann gelöscht werden mit
+
+```txt
+docker rm bsp-apache-php-container
+```
+
+### Images Managing
+Lokal vorhandene Images anzeigen lassen
+```txt
+docker images
+```
+
+Image löschen
+```txt
+docker rmi bsp-apache-php
+```
+
+## Volumes
