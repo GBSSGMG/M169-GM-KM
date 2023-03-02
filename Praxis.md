@@ -36,7 +36,7 @@ FROM php:8-apache
 COPY index.php /var/www/html
 ```
 
-### Entsprechende Dateie erstellen z.B index.php
+### Entsprechende Datei erstellen z.B index.php
 ```html
 <!DOCTYPE html >
 <!-- Datei index.php -->
