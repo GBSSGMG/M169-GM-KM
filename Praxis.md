@@ -104,5 +104,6 @@ Image löschen
 ```txt
 docker rmi bsp-apache-php
 ```
+<br>
 
 ## Volumes
