@@ -1,8 +1,17 @@
 # Docker Dossier
 
-## Aufgabe 1.2
-Praxisaufgabe:
-1. Wie setzt sich der Image-Name zusammen?
-Der Name setzt sich aus Hersteller/Repositoryname
-2. Wie können Sie das lokale Image wieder auffrischen? 
-Befehl: "Docker pull Imagename"
+![Docker Logo](https://www.docker.com/wp-content/uploads/2022/03/Moby-logo.png)
+
+<br>
+
+## Inhaltsverzeichnis
+
+1. [Was ist Docker](#Was ist Docker)
+2. [Build](#build)
+3. [Lizenz](#lizenz)
+4. [Autoren](#autoren) 
+
+<br>
+
+## Was ist Docker
+Docker ist eine Plattform zur Containerisierung von Anwendungen. Container sind isolierte Umgebungen, die eine Anwendung mit all ihren Abhängigkeiten einschliessen, damit sie auf jedem System ausgeführt werden kann, unabhängig von der zugrunde liegenden Infrastruktur. Docker macht es einfach, Anwendungen in Containern zu erstellen, zu verteilen und auszuführen, wodurch die Komplexität der Bereitstellung von Anwendungen in unterschiedlichen Umgebungen reduziert wird.
