@@ -23,8 +23,10 @@ Docker ist eine Plattform zur Containerisierung von Anwendungen. Container sind 
 ### Build Ordner erstellen und eingehen
 ```txt
 mkdir bsp-apache-php
-cd bsp-apache-php
+```
 ```txt
+cd bsp-apache-php
+```
 
 ### Dockerfile erstellen und schreiben
 ```dockerfile
