@@ -179,6 +179,7 @@ c69c18f0a974   none                                 null      local
 
 ### Standardnetzwerk
 Das Netzwerk mit dem Namen bridge ist das Standardnetzwerk und wird verwendet wenn nichts anderes angegeben wird. Die Netzwerkarchitektur lässt sich wie folgt darstellen:
+
 ![Netzwerkschema](https://gbssg.gitlab.io/m169/img/kap1/7-1.PNG)
 
 ```txt
