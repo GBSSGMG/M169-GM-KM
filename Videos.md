@@ -1,26 +1,26 @@
-Video 1 (Praxis Aufagbe MariaDB): 
+## Video 1 (Praxis Aufagbe MariaDB): 
 Command1: docker run -d --name mariadb-test -e MYSQL_ROOT_PASSWORD=geheim mariadb
 Command2: docker inspect mariadb-test
 
 
-Video 2 (Portainer): 
+## Video 2 (Portainer): 
 Im Browser aufrufbar indem man (solang portainer installiert ist) ein gibt und dann local auswählt: localhost:9443 
 
-Video 3 (phpmyadmin): 
+## Video 3 (phpmyadmin): 
 Command1: docker run -d --name mariadb-test -e MYSQL_ROOT_PASSWORD=geheim mariadb
 Command2: docker pull phpmyadmin/phpmyadmin
 Command3: docker run --name my-own-phpmyadmin -d --link mariadb-test:db -p 8081:80 phpmyadmin/phpmyadmin
 Phpmyadmin ist nun im Broswer unter localhost:8081 aufrufbar: user: rool passwort (vorher deklariert): geheim
 
-Video 4 (testen ob die daten erhalten bleiben): 
+## Video 4 (testen ob die daten erhalten bleiben): 
 Zu databases wechseln, create database, name = test, create, name = test, create
 In Portainer Maria DB löschen und phpmyadmin stoppen
 
-Video 5(testen ob die daten noch da sind): 
+## Video 5(testen ob die daten noch da sind): 
 Maria DB neu erstellen und phpmyadmin wieder starten und auf localhost:8081 gehen
 Tabelle verschwunden (nicht optimal, daten/tabelle verschwudnen)
 
-Video 6(Verzeichnis): 
+## Video 6(Verzeichnis): 
 Alle Container und Volumes löschen. 
 Datenbank extern auf einem anderen Volume hosten.
 Command1: docker run -d --name mariadb-test -v myvolume:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=geheim mariadb
@@ -31,7 +31,7 @@ Command4(update machen): docker pull mariadb
 Command5: docker run -d --name mariadb-test -v myvolume:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=geheim mariadb
 Phpmyadmin aufrufen und schauen ob test tabelle nohc vorhanden ist 
 
-Video 7 (Eigenes Verzeichnis):
+## Video 7 (Eigenes Verzeichnis):
 Command1(eigens Linux Verzeichnis erstellen): mkdir varlibmysql
 Command2: docker Command1(Erklärung: alles einfach, neu: "/home...:/varli..." vor dem ":" verzeichnis in linux wo das
 volume abgelegt ist, nach dem ":" kommt der ort im container) 
@@ -40,11 +40,11 @@ Command3(ins linux verzeichnis vom volume wechseln): cd varlibmysql/
 Command3(testen ob das volume vorhanden ist): ls
 
 
-Video Netzwerk:
+## Video Netzwerk:
 Command(testnet = name): docker network create testnet
 Netzwerk kann auf Portainer gesehen werden
 
-Video Wordpress 1-3:
+## Video Wordpress 1-3:
 Benötigte Container: 
 1.DB = Mariadb
 2.Phpmyadmin
