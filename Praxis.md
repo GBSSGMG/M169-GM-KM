@@ -10,7 +10,7 @@
 2. [Dockerimage builden](#Dockerimage-builden)
 3. [Run-Check-Stop-Remove-sheet](#Run-Check-Stop-Remove-sheet)
 4. [Volumes](#Volumes)
-
+5. [Netzwerke](#Netzwerke)
 
 <br>
 
@@ -156,4 +156,23 @@ Damit wird das Volume ganz aus der Dockerumgebung herausgelöst und kann an eine
 ```txt
 mkdir /home/vmadmin/databases
 docker run -d --name mariadb-test3 -v /home/vmadmin/databases:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=geheim mariadb
+```
+
+<br>
+
+## Netzwerke
+
+Hier geht es darum wie mehrere Dockercontainer untereinander kommunizieren können. Beispielsweise muss ein Web-Container mit einem Datenbank-Container kommunizieren können und an seine Daten zu kommen.
+
+Der Befehl
+```txt
+docker network ls
+```
+zeigt die vorhandenen Netzwerke an.
+```txt
+vmadmin@ubuntu:~$ docker network ls
+NETWORK ID     NAME                                 DRIVER    SCOPE
+65593a9ebb3b   bridge                               bridge    local
+364521a9eaa2   host                                 host      local
+c69c18f0a974   none                                 null      local
 ```
