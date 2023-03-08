@@ -107,3 +107,53 @@ docker rmi bsp-apache-php
 <br>
 
 ## Volumes
+Hier geht es darum, wo ein Container seine Daten speichert. Daten die in einem laufenden Container gespeichert sind, bleiben erhalten, wenn der Container gestoppt und wieder gestartet wird, nicht jedoch wenn ein Container gelöscht und wieder neu erzeugt wird.
+
+### Unbenannte Volumes
+Schauen wir dazu nochmals das Beispiel des mariadb-Servers an. Einen Image können Sie mit dem folgenden Kommando herunterladen und einen Container daraus starten
+```txt
+docker run -d --name mariadb-test -e MYSQL_ROOT_PASSWORD=geheim mariadb
+```
+Um herauszufinden wo nun die Daten aus /var/lib/mysql gelandet sind können Sie das Kommando
+```txt
+docker inspect -f '{{.Mounts}}' mariadb-test
+```
+ergibt:
+```txt
+vmadmin@ubuntu:~/bsp-apache-php$ docker inspect -f '{{.Mounts}}' mariadb-test
+[{volume 752507751a42f0c781b96adacb4a3d73bdbbf2184ead3bd4874b4b5f065ee4eb /var/lib/docker/volumes/752507751a42f0c781b96adacb4a3d73bdbbf2184ead3bd4874b4b5f065ee4eb/_data /var/lib/mysql local  true }]
+vmadmin@ubuntu:~/bsp-apache-php$
+```
+Sollte z.B ein Volume gelöscht werden, müsste der vollständige Verzeichnisname angegeben werden:
+```txt
+docker volume rm 7525077...
+```
+
+### Benannte Volumes
+
+Eine bessere Variante ist es deshalb Volumes beim Erstellen eines Containers zu benennen:
+
+```txt
+docker run -d --name mariadb-test2 -v myvolume:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=geheim mariadb
+```
+```txt
+vmadmin@ubuntu:~/bsp-apache-php$ docker run -d --name mariadb-test2 -v myvolume:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=geheim mariadb
+2ccb55f675a5867efeefaa8bfd02e896cf0e0e1b66fe098465d6d7cc3e6a9bc6
+vmadmin@ubuntu:~/bsp-apache-php$ docker inspect -f '{{.Mounts}}' mariadb-test2
+[{volume myvolume /var/lib/docker/volumes/myvolume/_data /var/lib/mysql local z true }]
+```
+Wie Sie sehen, wird nun der gewählte Name für das Unterverzeichnis verwendet. Die Syntax lautet somit:
+```txt
+-v volumename:containerverzeichnis
+```
+
+### Volumes in eigenen Verzeichnissen
+Anstelle eines Namens für das Hostvolume kann auch ein Verzeichnis angegeben werden:
+```txt
+-v hostverzeichnis:containerverzeichnis
+```
+Damit wird das Volume ganz aus der Dockerumgebung herausgelöst und kann an einer beliebigen Stelle platziert werden:
+```txt
+mkdir /home/vmadmin/databases
+docker run -d --name mariadb-test3 -v /home/vmadmin/databases:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=geheim mariadb
+```
