@@ -81,3 +81,41 @@ Volumes sind die Speicher der Container, welche weiter bestehen können wenn der
 ## Sie-kennen-die-wichtigsten-Befehle-um-Docker-zu-administrieren,-dazu-zählen-Platzbedarf-von-Images-und-Containern-ermitteln,-Container-und-Images-löschen,-Volumes-verwalten,-Gesamtüberblick-erhalten-und-Ungenutzten-Speicher-freigeben.
 
 [Schau die Praxisbezogene Doku an](https://github.com/GBSSGMG/M169-GM-KM/blob/main/Praxis.md)
+
+
+## Joel Zusammenfassung
+
+Erklärung Netzwerk
+⦁	Bridge-Netzwerk: Standardmäßig werden Docker-Container in einem Bridge-Netzwerk erstellt, das es den Containern ermöglicht, miteinander zu kommunizieren, ohne dass sie öffentlich zugänglich sind. Der Host-System wird auch in dieses Netzwerk einbezogen. Jeder Container erhält eine IP-Adresse im Bridge-Netzwerk und kann auf andere Container im Netzwerk zugreifen, indem er die IP-Adresse oder den Container-Namen verwendet.
+
+⦁	Host-Netzwerk: Docker bietet auch die Option, Container direkt an das Host-Netzwerk anzuschließen, wodurch sie dieselbe Netzwerkumgebung wie das Host-System haben. Container, die dem Host-Netzwerk angeschlossen sind, haben Zugriff auf alle Netzwerkressourcen, die auf dem Host verfügbar sind.
+
+⦁	Overlay-Netzwerk: Overlay-Netzwerke ermöglichen es Containern, über mehrere Hosts hinweg miteinander zu kommunizieren. Dies ist nützlich für Anwendungen, die auf mehrere Hosts verteilt sind und die Interaktion zwischen Containern erfordern.
+
+⦁	Custom-Netzwerk: Docker ermöglicht es auch, benutzerdefinierte Netzwerke zu erstellen, die spezifisch für eine Anwendung oder Gruppe von Anwendungen sind. Diese Netzwerke können so konfiguriert werden, dass sie nur den erforderlichen Datenverkehr zulassen und die Sicherheit erhöhen.
+
+
+Wichtigste Befehle
+
+Platzbedarf von Images und Containern ermitteln:
+"docker images -a" zeigt eine Liste aller Images an, die auf dem Host-System gespeichert sind, zusammen mit ihrer Größe.
+"docker ps -a" zeigt eine Liste aller Container an, die auf dem Host-System ausgeführt werden, zusammen mit ihrem Status und ihrer Größe.
+
+Container und Images löschen:
+"docker rm" löscht einen oder mehrere Container von dem Host-System. Zum Beispiel: "docker rm container_name".
+"docker rmi" löscht ein oder mehrere Images von dem Host-System. Zum Beispiel: "docker rmi image_name".
+
+Volumes verwalten:
+"docker volume ls" zeigt eine Liste aller Volumes an, die auf dem Host-System erstellt wurden.
+"docker volume create" erstellt ein neues Volume.
+"docker volume rm" löscht ein oder mehrere Volumes. Zum Beispiel: "docker volume rm volume_name".
+
+Gesamtüberblick erhalten:
+"docker stats" zeigt Echtzeitinformationen zu CPU, Speicher und Netzwerkverbrauch von allen laufenden Containern an.
+"docker system df" zeigt Informationen zu allen Images, Containern und Volumes an, die auf dem Host-System gespeichert sind.
+
+Ungenutzten Speicher freigeben:
+"docker system prune" entfernt alle nicht verwendeten Images, Container und Volumes von dem Host-System.
+"docker image prune" entfernt alle nicht verwendeten Images von dem Host-System.
+"docker container prune" entfernt alle nicht verwendeten Container von dem Host-System.
+"docker volume prune" entfernt alle nicht verwendeten Volumes von dem Host-System.
