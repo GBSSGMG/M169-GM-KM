@@ -176,3 +176,61 @@ NETWORK ID     NAME                                 DRIVER    SCOPE
 364521a9eaa2   host                                 host      local
 c69c18f0a974   none                                 null      local
 ```
+
+### Standardnetzwerk
+Das Netzwerk mit dem Namen bridge ist das Standardnetzwerk und wird verwendet wenn nichts anderes angegeben wird. Die Netzwerkarchitektur lässt sich wie folgt darstellen:
+![Netzwerkschema](https://gbssg.gitlab.io/m169/img/kap1/7-1.PNG)
+
+```txt
+docker run  -it --name ubuntu_1 ubuntu:latest
+```
+Hier erkennt man die Definition des Klasse B Netzwerkes 172.17.0.0/16 und die IP-Adresse des Containers
+
+```txt
+docker network inspect bridge
+```
+
+### Eigene Netzwerke
+Alle Container landen standardmässig im selben Netzwerk, dem bridge-Netzwerk. Dies ist aus sicherheitstechnischen Gründen nciht ideal, wenn unterschiedliche Anwendungen voneinander isoliert sein sollen. Es lassen sich deshalb eigene Netzwerke definieren und diese den Containern zuordnen.
+```txt
+docker network create \
+--driver=bridge \
+--subnet=10.10.10.0/24 \
+--gateway=10.10.10.1 \
+my_net
+```
+
+Ein Container kann nun beim Start diesem Netzwerk zugeordnet werden:
+```txt
+docker run -it --name ubuntu_2 --network=my_net ubuntu:latest
+```
+und
+```txt
+docker network inspect my_net
+```
+
+Die IP-Adresse für den Container wird dabei von docker via DHCP aus dem definierten Netzwerk vergeben. Alternativ kann eine fixe IP-Adresse beim Start des Containers angegeben werden.
+
+```txt
+docker run -it --name ubuntu_2 --ip="10.10.10.10" --network=my_net ubuntu:latest
+```
+
+Netzwerk entfernen
+```txt
+docker network disconnect bridge ubuntu_1
+```
+```txt
+docker network connect my_net ubuntu_1
+docker start -i ubuntu_1
+```
+
+Ping Software
+```txt
+apt update
+apt install iputils-ping
+```
+
+Nachdem alle Container, die zu einem Netzwerk hinzugefügt wurden, gestoppt oder getrennt wurden, können Sie das Netzwerk mit folgendem Befehl löschen:
+```txt
+docker network rm my_net
+```
